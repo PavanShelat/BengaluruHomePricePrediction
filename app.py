@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify
 import util
+import os
 
 app = Flask(__name__, static_url_path="", static_folder="client")  # Point to your HTML folder
 
@@ -28,9 +29,9 @@ def predict_home_price():
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
 
+
+
 if __name__ == "__main__":
-    from flask import Flask
-    print("Starting Python Flask Server For Home Price Prediction...")
-    util.load_saved_artifacts()
-    app.run(debug=True)
-    app.run(host='0.0.0.0', port=10000)
+    port = int(os.environ.get("PORT", 5000))  # Render sets this
+    app.run(host="0.0.0.0", port=port)
+
