@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Banglore Home Price Prediction</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="app.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #1f1c2c, #928dab);
+            /* Dark gradient */
+            color: #f1f1f1;
+        }
+
+        .form-container {
+            max-width: 500px;
+            margin: 50px auto;
+            background: #2c2c3e;
+            /* Dark card background */
+            padding: 30px 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        h2 {
+            margin-top: 20px;
+            font-size: 20px;
+            color: #ffffff;
+        }
+
+        input[type="text"],
+        select {
+            width: 100%;
+            padding: 12px;
+            margin-top: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #555;
+            border-radius: 8px;
+            font-size: 16px;
+            background-color: #444;
+            color: #fff;
+        }
+
+        .switch-field {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+
+        .switch-field input[type="radio"] {
+            display: none;
+        }
+
+        .switch-field label {
+            padding: 10px 18px;
+            border: 1px solid #888;
+            border-radius: 6px;
+            background-color: #555;
+            color: #eee;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .switch-field input[type="radio"]:checked+label {
+            background-color: #00adb5;
+            color: #ffffff;
+            border-color: #00adb5;
+        }
+
+        .submit {
+            width: 100%;
+            background-color: #00adb5;
+            color: white;
+            padding: 14px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+
+        .submit:hover {
+            background-color: #009da1;
+        }
+
+        .result {
+            margin-top: 25px;
+            font-size: 22px;
+            color: #ffffff;
+            text-align: center;
+        }
+
+        select option {
+            background-color: #333;
+            color: #fff;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            text-align: center;
+            color: #ffffff;
+            margin-top: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 style="text-align: center; color: #fff; margin-top: 20px;">
+         Bangalore Home Price Prediction
+    </h1>
+    <div class="form-container">
+        <form class="form">
+            <h2>Area (Square Feet)</h2>
+            <input type="text" id="uiSqft" name="Squareft" value="1000">
+
+            <h2>BHK</h2>
+            <div class="switch-field">
+                <input type="radio" id="radio-bhk-1" name="uiBHK" value="1">
+                <label for="radio-bhk-1">1</label>
+
+                <input type="radio" id="radio-bhk-2" name="uiBHK" value="2" checked>
+                <label for="radio-bhk-2">2</label>
+
+                <input type="radio" id="radio-bhk-3" name="uiBHK" value="3">
+                <label for="radio-bhk-3">3</label>
+
+                <input type="radio" id="radio-bhk-4" name="uiBHK" value="4">
+                <label for="radio-bhk-4">4</label>
+
+                <input type="radio" id="radio-bhk-5" name="uiBHK" value="5">
+                <label for="radio-bhk-5">5</label>
+            </div>
+
+            <h2>Bath</h2>
+            <div class="switch-field">
+                <input type="radio" id="radio-bath-1" name="uiBathrooms" value="1">
+                <label for="radio-bath-1">1</label>
+
+                <input type="radio" id="radio-bath-2" name="uiBathrooms" value="2" checked>
+                <label for="radio-bath-2">2</label>
+
+                <input type="radio" id="radio-bath-3" name="uiBathrooms" value="3">
+                <label for="radio-bath-3">3</label>
+
+                <input type="radio" id="radio-bath-4" name="uiBathrooms" value="4">
+                <label for="radio-bath-4">4</label>
+
+                <input type="radio" id="radio-bath-5" name="uiBathrooms" value="5">
+                <label for="radio-bath-5">5</label>
+            </div>
+
+            <h2>Location</h2>
+            <select id="uiLocations">
+                <option value="" disabled selected>Choose a Location</option>
+                <option>Electronic City</option>
+                <option>Rajaji Nagar</option>
+            </select>
+
+            <button class="submit" onclick="onClickedEstimatePrice()" type="button">Estimate Price</button>
+            <div id="uiEstimatedPrice" class="result">
+                <h2></h2>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
